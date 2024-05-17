@@ -1,20 +1,12 @@
-const express = require('express');
-const Participant = require('../models/participantModel')
-
+const express = require("express");
+const {
+  sendParticipant,
+  getParticipants,
+} = require("../controllers/participantController");
 const router = express.Router();
 
-router.post('/', async (req, res) => {
-    const {firstName, secondName, email, dateOfBirth, heardFrom } = req.body;
+router.post("/", sendParticipant);
 
-    try {
-        const participant = await Participant.create({
-            firstName, secondName, email, dateOfBirth, heardFrom
-        })
+router.get("/:event", getParticipants);
 
-        res.status(200).json(participant)
-    } catch (error) {
-        res.status(400).json({error: error.message})
-    }
-})
-
-module.exports = router
+module.exports = router;
