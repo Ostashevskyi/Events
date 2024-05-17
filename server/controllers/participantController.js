@@ -21,8 +21,13 @@ const sendParticipant = async (req, res) => {
 const getParticipants = async (req, res) => {
   try {
     const { event } = req.params;
+    const { fullName, email } = req.query;
 
-    const participants = await Participant.find().where("event", event);
+    const participants = await Participant.find({
+      event: event,
+      fullName: fullName ? fullName : /.*/,
+      email: email ? email : /.*/,
+    });
 
     res.status(200).json(participants);
   } catch (error) {
