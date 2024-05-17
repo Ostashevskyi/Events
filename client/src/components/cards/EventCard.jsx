@@ -10,7 +10,7 @@ const EventCard = ({ cardInfo }) => {
       <p className="text-sm text-[#555]">Date: {eventDate}</p>
       <p className="text-sm text-[#555]">Organizer: {organizer}</p>
       <div className="flex justify-between">
-        <NavLink to={"/"}>Register</NavLink>
+        <NavLink to={`/register/${title}`}>Register</NavLink>
         <NavLink to={"/"}>View</NavLink>
       </div>
     </section>
