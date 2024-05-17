@@ -18,4 +18,16 @@ const sendParticipant = async (req, res) => {
   }
 };
 
-module.exports = sendParticipant;
+const getParticipants = async (req, res) => {
+  try {
+    const { event } = req.params;
+
+    const participants = await Participant.find().where("event", event);
+
+    res.status(200).json(participants);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = { sendParticipant, getParticipants };

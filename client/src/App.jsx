@@ -31,7 +31,7 @@ function App() {
   }, [activePage]);
 
   return (
-    <div className="max-w-[1440px] m-auto">
+    <div className="max-w-[1440px] m-auto p-4">
       <main className="h-screen flex flex-col justify-center gap-5">
         <h1 className="text-3xl">Events</h1>
         {loading ? (
@@ -48,6 +48,7 @@ function App() {
             </Context.Provider>
           </>
         )}
+        {!events?.length && <p>Seems that there are no active events now </p>}
         {error && <p>{error}</p>}
       </main>
     </div>
