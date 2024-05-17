@@ -50,6 +50,9 @@ const View = () => {
             <NavLink to={`/register/${event}`} className="text-2xl">
               Be the first one!
             </NavLink>
+            <p className="mt-4">
+              <NavLink to={"/"}>Back to events</NavLink>
+            </p>
           </div>
         )}
         {error && <p>{error}</p>}
