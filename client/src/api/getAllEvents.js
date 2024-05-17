@@ -1,10 +1,13 @@
-const getAllEvents = async (page) => {
-  const data = await fetch(`http://localhost:4000/api/events/${page}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+const getAllEvents = async (page, sortBy) => {
+  const data = await fetch(
+    `http://localhost:4000/api/events/${page}?sort=${sortBy}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
 
   return await data.json();
 };

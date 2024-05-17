@@ -2,6 +2,8 @@ import { createContext, useEffect, useState } from "react";
 import getAllEvents from "./api/getAllEvents";
 import EventCard from "./components/cards/EventCard";
 import Pagination from "./components/pagination/Pagination";
+import SortSelect from "./components/select/SortSelect";
+import { useSearchParams } from "react-router-dom";
 
 export const Context = createContext();
 
@@ -11,12 +13,16 @@ function App() {
   const [error, setError] = useState(null);
   const [length, setLength] = useState();
   const [activePage, setActivePage] = useState(1);
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
         setLoading(true);
-        const data = await getAllEvents(activePage - 1);
+        const data = await getAllEvents(
+          activePage - 1,
+          searchParams.get("sort")
+        );
         const { events, length } = data;
         setEvents(events);
         setLength(length);
@@ -28,14 +34,17 @@ function App() {
     };
 
     fetchEvents();
-  }, [activePage]);
+  }, [activePage, searchParams]);
 
   return (
     <div className="max-w-[1440px] m-auto p-4">
       <main className="h-screen flex flex-col justify-center gap-5">
-        <h1 className="text-3xl">Events</h1>
+        <section className="flex justify-between">
+          <h1 className="text-3xl">Events</h1>
+          <SortSelect />
+        </section>
         {loading ? (
-          <p>Loading...</p>
+          <p className="text-center">Loading...</p>
         ) : (
           <>
             <div className="grid grid-cols-4 gap-4">
