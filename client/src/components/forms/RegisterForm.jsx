@@ -3,6 +3,7 @@ import { useParams, NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import generateErrorMessage from "../../utils/generateErrorMessage";
+import { validateDate } from "../../utils/validateDate";
 
 const RegisterForm = () => {
   const { event } = useParams();
@@ -50,10 +51,12 @@ const RegisterForm = () => {
       <label htmlFor="fullName">Full name *</label>
       <input
         type="text"
+        placeholder="John Doe"
         id="fullName"
         className="border rounded-md p-1 focus:outline-none"
         {...register("fullName", {
           required: true,
+          pattern: /^[A-Z][a-z]+ [A-Z][a-z]+$/,
         })}
       />
       {errors.fullName && (
@@ -66,8 +69,12 @@ const RegisterForm = () => {
       <input
         type="email"
         id="email"
+        placeholder="email@gmail.com"
         className="border rounded-md p-1 focus:outline-none"
-        {...register("email", { required: true })}
+        {...register("email", {
+          required: true,
+          pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+        })}
       />
       {errors.email && (
         <p className="text-red-500">
@@ -80,7 +87,7 @@ const RegisterForm = () => {
         type="date"
         id="date"
         className="border rounded-md p-1 focus:outline-none cursor-pointer"
-        {...register("dateOfBirth", { required: true })}
+        {...register("dateOfBirth", { required: true, validate: validateDate })}
       />
       {errors.dateOfBirth && (
         <p className="text-red-500">

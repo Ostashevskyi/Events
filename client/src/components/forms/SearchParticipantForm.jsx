@@ -1,15 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { useSearchParams } from "react-router-dom";
 
-const SearchParticipantForm = ({ event }) => {
+const SearchParticipantForm = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = async (data) => {
     if (data.fullName) {
@@ -24,6 +19,7 @@ const SearchParticipantForm = ({ event }) => {
       searchParams.delete("email");
     }
 
+    reset();
     setSearchParams(searchParams);
   };
 
