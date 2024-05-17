@@ -23,6 +23,13 @@ const SearchParticipantForm = () => {
     setSearchParams(searchParams);
   };
 
+  const resetHandle = () => {
+    searchParams.delete("fullName");
+    searchParams.delete("email");
+
+    setSearchParams(searchParams);
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex gap-4 items-center">
       <p className="text-xl">Search participant</p>
@@ -42,6 +49,12 @@ const SearchParticipantForm = () => {
         type="Submit"
         className="border rounded-lg p-1 text-center h-8 cursor-pointer"
       />
+      <button
+        className="border rounded-lg p-1 text-center h-8 cursor-pointer"
+        onClick={() => resetHandle()}
+      >
+        Reset
+      </button>
     </form>
   );
 };
