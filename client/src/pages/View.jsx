@@ -1,19 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import React, { createContext, useEffect, useState } from "react";
+import { NavLink, useParams, useSearchParams } from "react-router-dom";
 import getEventParticipants from "../api/getEventParticipants";
 import ParticipantCard from "../components/cards/ParticipantCard";
+import SearchParticipantForm from "../components/forms/SearchParticipantForm";
+
+export const SearchContext = createContext();
 
 const View = () => {
   const { event } = useParams();
   const [participants, setParticipants] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
+    const fullName = searchParams.get("fullName");
+    const email = searchParams.get("email");
+
     const fetchParticipants = async () => {
       try {
         setLoading(true);
-        const participants = await getEventParticipants(event);
+        const participants = await getEventParticipants(event, fullName, email);
         setParticipants(participants);
       } catch (error) {
         setError(error);
@@ -23,12 +30,15 @@ const View = () => {
     };
 
     fetchParticipants();
-  }, []);
+  }, [searchParams]);
 
   return (
     <div className="max-w-[1440px] m-auto p-4">
       <div className="h-screen flex flex-col justify-center gap-5">
-        <h1 className="text-2xl">{event} participants</h1>
+        <section className="flex items-center justify-between">
+          <h1 className="text-2xl">{event} participants</h1>
+          <SearchParticipantForm />
+        </section>
         {loading && participants?.length ? (
           <p>Loading...</p>
         ) : participants?.length ? (

@@ -1,8 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 import getAllEvents from "./api/getAllEvents";
 import EventCard from "./components/cards/EventCard";
-import Pagination from "./components/pagination/Pagination";
-import SortSelect from "./components/select/SortSelect";
+import Pagination from "./components/paginations/Pagination";
+import SortSelect from "./components/selects/SortSelect";
 import { useSearchParams } from "react-router-dom";
 
 export const Context = createContext();
