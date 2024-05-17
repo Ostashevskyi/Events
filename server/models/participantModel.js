@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const moment = require("moment");
 
 const Schema = mongoose.Schema;
 
@@ -22,6 +23,10 @@ const participantSchema = new Schema({
   event: {
     type: String,
     required: true,
+  },
+  date: {
+    type: Date,
+    default: moment().format("YYYY-MM-DD"),
   },
 });
 

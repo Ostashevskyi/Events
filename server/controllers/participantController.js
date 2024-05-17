@@ -1,4 +1,5 @@
 const Participant = require("../models/participantModel");
+const moment = require("moment");
 
 const sendParticipant = async (req, res) => {
   try {
@@ -29,7 +30,12 @@ const getParticipants = async (req, res) => {
       email: email ? email : /.*/,
     });
 
-    res.status(200).json(participants);
+    const todayParticipants = await Participant.find({
+      event: event,
+      date: moment().format("YYYY-MM-DD"),
+    }).countDocuments();
+
+    res.status(200).json({ participants, todayParticipants });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
