@@ -9,7 +9,6 @@ const eventSchema = new Schema({
   },
   descriptions: {
     type: String,
-    required: true,
   },
   eventDate: {
     type: String,
@@ -17,7 +16,6 @@ const eventSchema = new Schema({
   },
   organizer: {
     type: String,
-    required: true,
   },
 });
 
