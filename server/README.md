@@ -21,7 +21,13 @@ This is a basic Express Node.js application.
     cd Events
     ```
 
-3. Install the dependencies:
+3. Navigate to the server directory:
+
+   ```bash
+   cd server
+   ```
+
+4. Install the dependencies:
 
     ```bash
     npm install
