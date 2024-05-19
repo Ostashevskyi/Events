@@ -13,6 +13,12 @@ This is a test task project for an event management application. The project is 
 - [Node.js](https://nodejs.org/)
 - [NPM](https://www.npmjs.com/)
 
+## Builds
+
+- `base`: https://events-base-level.netlify.app/
+- `middle`: https://event-middle-level.netlify.app/
+- `advanced`: https://events-advanced-level.netlify.app/
+  
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
