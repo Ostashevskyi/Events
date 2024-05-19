@@ -39,3 +39,11 @@ To run the application in development mode, use the following command:
 
 ```bash
 npm run dev
+```
+
+## Environment Variables
+
+```bash
+PORT=4000
+MONGO_URI=mongodb+srv://yurkoostashevsky:159753640@cluster0.xpthirm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+```
