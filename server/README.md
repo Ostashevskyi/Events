@@ -12,7 +12,7 @@ This is a basic Express Node.js application.
 1. Clone the repository:
 
     ```bash
-    git clone [https://github.com/your-username/your-repo.git](https://github.com/Ostashevskyi/Events.git)
+    git clone https://github.com/Ostashevskyi/Events.git
     ```
 
 2. Navigate to the project directory:
