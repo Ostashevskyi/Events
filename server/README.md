@@ -18,7 +18,7 @@ This is a basic Express Node.js application.
 2. Navigate to the project directory:
 
     ```bash
-    cd Base-level
+    cd Events
     ```
 
 3. Install the dependencies:
